@@ -1,3 +1,6 @@
+
+## File Structure
+```
 /node_modules
 	--
 /assets
@@ -23,5 +26,10 @@
 			_styles.scss
 gulpfile.js
 package.json
+```
+ 1. run `npm update` to download files from
+ 2. install gulp
+ 3. run `gulp`
 
-# markup_example
+ 
+
