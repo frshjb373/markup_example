@@ -1,0 +1,36 @@
+/*
+
+// creates a breakpoint with a min-width and max-width
+@include media-breakpoint-between(sm, md) {} 
+
+// creates a breakpoint with a min-width of $sm
+@include media-breakpoint-up(sm) {} 
+
+//creates a breakpoint with a max-width of $md
+@include media-breakpoint-down(md) {} 
+
+*/
+
+// featured blog entries block
+.featured-blog-entries {
+	p {
+    	font-size: rem-calc(16);
+    	line-height: rem-calc(24);
+    	letter-spacing: rem-calc(1);
+		color: $primary;
+		@include media-breakpoint-down(md) {
+			font-size: rem-calc(12);
+		} 
+		@include media-breakpoint-down(sm) {
+			font-size: rem-calc(10);
+			font-weight: normal;
+		} 
+	}
+}
+
+
+
+
+
+
+

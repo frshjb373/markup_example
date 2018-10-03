@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="index,follow">
+        <meta name="author" content="Author name" />
+        <meta name="copyright" content="Copyright owner" />
+        <link rel="icon" type="image/png" href="/public/uploads/images/favicon.png">
+        <title>default meta title here in global variables</title>
+        <meta name='description' content='default meta title here in global variables' />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Roboto:400,700" rel="stylesheet">
+        <!-- FancyBox -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.2/jquery.fancybox.min.css" />
+        <link href="/assets/css/styles.css" rel="stylesheet">
+        <style>
+            .bv-form .help-block { font-size: 15px; }
+            /* Icon position fix for Name double column */
+            .col-sm-6 .glyphicon { margin-right: 15px; }
+            /* Icon position fix for Captcha */
+            .ss-captcha .glyphicon { margin-top: 10px; }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <nav class="navbar navbar-dark bg-dark navbar-expand-lg" style="background-color: #e3f2fd;">
+                    <a class="navbar-brand" href="http://ee4.local">
+                    <img src="/public/uploads/images/333.png" style="max-width: 100px;">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <li class="">
+                                <a href="/" class="nav-link">Home</a>
+                            </li>
+                            <li class="">
+                                <a href="/page/" class="nav-link">Page</a>
+                            </li>
+                            <li class="active ">
+                                <a href="/styles/" class="nav-link">Styles</a>
+                            </li>
+                            <li class="">
+                                <a href="/blog/" class="nav-link">Blog</a>
+                            </li>
+                            <li class="">
+                                <a href="/calendar/" class="nav-link">Calendar</a>
+                            </li>
+                            <li class="">
+                                <a href="/member-page/" class="nav-link">Member Page</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline" id="header-search" method="post" action="http://ee4.local/"  >
+                            <div class='hiddenFields'>
+                                <input type="hidden" name="params" value="eyJyZXN1bHRfcGFnZSI6InNlYXJjaFwvaW5kZXgiLCJyZXF1aXJlZCI6ImtleXdvcmRzIn0" />
+                                <input type="hidden" name="ACT" value="185" />
+                                <input type="hidden" name="site_id" value="1" />
+                                <input type="hidden" name="csrf_token" value="4a9994566097adcdefff6b1029db199383f5cc1c" />
+                            </div>
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="keywords" id="keywords" >
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+            </header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <section id="bloq">
+                            <h1 class="display-4">Bootstrap Elements</h1>
+                            <!-- Form Elements -->
+                            <div class="mb-5 mt-5">
+                                <h2>Default Bootstrap Form Elements</h2>
+                                <hr>
+                                <form class="needs-validation mb-4" novalidate>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email Input</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        <small id="emailHelp" class="form-text text-muted">This is help text.</small>
+                                        <div class="invalid-feedback">
+                                            Valid Email Required
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password Input</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                                        <div class="invalid-feedback">
+                                            Valid Password Required
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" required>
+                                            <label class="form-check-label" for="exampleRadios1">
+                                            Default radio
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2" required>
+                                            <label class="form-check-label" for="exampleRadios2">
+                                            Second default radio
+                                            </label>
+                                            <div class="invalid-feedback">
+                                                Must Select Option
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled>
+                                            <label class="form-check-label" for="exampleRadios3">Disabled radio</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck3" required>
+                                            <label class="form-check-label" for="invalidCheck3">
+                                            Agree to terms and conditions
+                                            </label>
+                                            <div class="invalid-feedback">
+                                                You must agree before submitting.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" name="checkbox-group" disabled>
+                                            <label class="form-check-label" for="defaultCheck2">
+                                            Disabled checkbox
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Example select</label>
+                                        <select class="form-control" id="exampleFormControlSelect1" required>
+                                            <option selected></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            You must select option before submitting.
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect2">Example multiple select</label>
+                                        <select multiple class="form-control" id="exampleFormControlSelect2" required>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            You must select at least 1 option before submitting.
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Example textarea</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Default input">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-sm" type="text" placeholder=".form-control-sm">
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Readonly input here…" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="customFile" required>
+                                            <label class="custom-file-label" for="customFile">Choose file</label>
+                                            <div class="invalid-feedback">
+                                                You must upload a file before submitting.
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1">Example file input</label>
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1" required>
+                                        <div class="invalid-feedback">
+                                            You must upload a file before submitting.
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                            <!-- END Form Elements -->
+                            <!-- Colors -->
+                            <div class="mb-5">
+                                <h2>Colors</h2>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h3>Text Colors</h3>
+                                        <p class="text-primary">.text-primary</p>
+                                        <p class="text-secondary">.text-secondary</p>
+                                        <p class="text-success">.text-success</p>
+                                        <p class="text-danger">.text-danger</p>
+                                        <p class="text-warning">.text-warning</p>
+                                        <p class="text-info">.text-info</p>
+                                        <p class="text-light bg-dark">.text-light</p>
+                                        <p class="text-dark">.text-dark</p>
+                                        <p class="text-body">.text-body</p>
+                                        <p class="text-muted">.text-muted</p>
+                                        <p class="text-white bg-dark">.text-white</p>
+                                        <p class="text-black-50">.text-black-50</p>
+                                        <p class="text-white-50 bg-dark">.text-white-50</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h3>Link Colors</h3>
+                                        <p><a href="#" class="text-primary">Primary link</a></p>
+                                        <p><a href="#" class="text-secondary">Secondary link</a></p>
+                                        <p><a href="#" class="text-success">Success link</a></p>
+                                        <p><a href="#" class="text-danger">Danger link</a></p>
+                                        <p><a href="#" class="text-warning">Warning link</a></p>
+                                        <p><a href="#" class="text-info">Info link</a></p>
+                                        <p><a href="#" class="text-light bg-dark">Light link</a></p>
+                                        <p><a href="#" class="text-dark">Dark link</a></p>
+                                        <p><a href="#" class="text-muted">Muted link</a></p>
+                                        <p><a href="#" class="text-white bg-dark">White link</a></p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h3>Link Colors</h3>
+                                        <div class="p-3 mb-2 bg-primary text-white">.bg-primary</div>
+                                        <div class="p-3 mb-2 bg-secondary text-white">.bg-secondary</div>
+                                        <div class="p-3 mb-2 bg-success text-white">.bg-success</div>
+                                        <div class="p-3 mb-2 bg-danger text-white">.bg-danger</div>
+                                        <div class="p-3 mb-2 bg-warning text-dark">.bg-warning</div>
+                                        <div class="p-3 mb-2 bg-info text-white">.bg-info</div>
+                                        <div class="p-3 mb-2 bg-light text-dark">.bg-light</div>
+                                        <div class="p-3 mb-2 bg-dark text-white">.bg-dark</div>
+                                        <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
+                                        <div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent</div>
+                                    </div>
+                                    <style type="text/css">
+                                        .bd-example-border-utils [class^=border] {
+                                        display: inline-block;
+                                        width: 5rem;
+                                        height: 5rem;
+                                        margin: .25rem;
+                                        background-color: #f5f5f5;
+                                        }
+                                    </style>
+                                    <div class="col-md-3 bd-example-border-utils">
+                                        <h3>Border Colors</h3>
+                                        <span class="border border-primary"></span>
+                                        <span class="border border-secondary"></span>
+                                        <span class="border border-success"></span>
+                                        <span class="border border-danger"></span>
+                                        <span class="border border-warning"></span>
+                                        <span class="border border-info"></span>
+                                        <span class="border border-light"></span>
+                                        <span class="border border-dark"></span>
+                                        <span class="border border-white"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END Colors -->
+                            <!-- Cards -->
+                            <div class="mb-5">
+                                <h2>Card</h2>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <img class="card-img-top" src="http://placehold.it/800x800" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Card title</h4>
+                                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                Featured
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Special title treatment</h5>
+                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="card text-center">
+                                            <div class="card-header">
+                                                Featured
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">Special title treatment</h5>
+                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                            </div>
+                                            <div class="card-footer text-muted">
+                                                2 days ago
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END Cards -->
+                            <!-- Breadcrumbs -->
+                            <div class="mb-5">
+                                <h2>Breadcrumbs</h2>
+                                <hr>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Library</a></li>
+                                    <li class="breadcrumb-item active">Data</li>
+                                </ol>
+                            </div>
+                            <!-- END Breadcrumbs -->
+                            <!-- Buttons -->
+                            <div class="mb-5">
+                                <h2>Buttons</h2>
+                                <hr>
+                                <div class="p-4 mb-4 bg-light">
+                                    <div class="mb-4">
+                                        <h3>Button Styles</h3>
+                                        <button type="button" class="btn btn-primary">Primary</button>
+                                        <button type="button" class="btn btn-secondary">Secondary</button>
+                                        <button type="button" class="btn btn-success">Success</button>
+                                        <button type="button" class="btn btn-danger">Danger</button>
+                                        <button type="button" class="btn btn-warning">Warning</button>
+                                        <button type="button" class="btn btn-info">Info</button>
+                                        <button type="button" class="btn btn-light">Light</button>
+                                        <button type="button" class="btn btn-dark">Dark</button>
+                                        <button type="button" class="btn btn-link">Link</button>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h3>Button Hover/Active Styles</h3>
+                                        <button type="button" class="btn btn-primary active">Primary</button>
+                                        <button type="button" class="btn btn-secondary active">Secondary</button>
+                                        <button type="button" class="btn btn-success active">Success</button>
+                                        <button type="button" class="btn btn-danger active">Danger</button>
+                                        <button type="button" class="btn btn-warning active">Warning</button>
+                                        <button type="button" class="btn btn-info active">Info</button>
+                                        <button type="button" class="btn btn-light active">Light</button>
+                                        <button type="button" class="btn btn-dark active">Dark</button>
+                                        <button type="button" class="btn btn-link active">Link</button>
+                                    </div>
+                                </div>
+                                <div class="p-4 mb-4 bg-light">
+                                    <div class="mb-2">
+                                        <h3>Button Outline Styles</h3>
+                                        <button type="button" class="btn btn-outline-primary">Primary</button>
+                                        <button type="button" class="btn btn-outline-secondary">Secondary</button>
+                                        <button type="button" class="btn btn-outline-success">Success</button>
+                                        <button type="button" class="btn btn-outline-danger">Danger</button>
+                                        <button type="button" class="btn btn-outline-warning">Warning</button>
+                                        <button type="button" class="btn btn-outline-info">Info</button>
+                                        <button type="button" class="btn btn-outline-light">Light</button>
+                                        <button type="button" class="btn btn-outline-dark">Dark</button>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h3>Button Outline Hover/Active Styles</h3>
+                                        <button type="button" class="btn btn-outline-primary active">Primary</button>
+                                        <button type="button" class="btn btn-outline-secondary active">Secondary</button>
+                                        <button type="button" class="btn btn-outline-success active">Success</button>
+                                        <button type="button" class="btn btn-outline-danger active">Danger</button>
+                                        <button type="button" class="btn btn-outline-warning active">Warning</button>
+                                        <button type="button" class="btn btn-outline-info active">Info</button>
+                                        <button type="button" class="btn btn-outline-light active">Light</button>
+                                        <button type="button" class="btn btn-outline-dark active">Dark</button>
+                                    </div>
+                                </div>
+                                <div class="p-4 mb-4 bg-light">
+                                    <div class="mb-2">
+                                        <button type="button" class="btn btn-primary btn-lg">Large button</button>
+                                        <button type="button" class="btn btn-default btn-lg">Large button</button>
+                                    </div>
+                                    <div class="mb-2">
+                                        <button type="button" class="btn btn-primary btn-sm">Small button</button>
+                                        <button type="button" class="btn btn-default btn-sm">Small button</button>
+                                    </div>
+                                    <div class="mb-2">
+                                        <button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END Buttons -->
+                            <!-- Alerts -->
+                            <div class="mb-5">
+                                <h2>Alerts</h2>
+                                <hr>
+                                <div class="alert alert-primary" role="alert">
+                                    A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                                </div>
+                                <div class="alert alert-secondary" role="alert">
+                                    A simple secondary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                                </div>
+                                <div class="alert alert-success" role="alert">
+                                    A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                                </div>
+                                <div class="alert alert-danger" role="alert">
+                                    A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                                </div>
+                                <div class="alert alert-warning" role="alert">
+                                    A simple warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                                </div>
+                                <div class="alert alert-info" role="alert">
+                                    A simple info alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                                </div>
+                                <div class="alert alert-light" role="alert">
+                                    A simple light alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                                </div>
+                                <div class="alert alert-dark" role="alert">
+                                    A simple dark alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                                </div>
+                                <div class="alert alert-success" role="alert">
+                                    <h4 class="alert-heading">Well done!</h4>
+                                    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+                                    <hr>
+                                    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+                                </div>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- END Alerts -->
+                            <!-- Headings And Typography -->
+                            <div class="mb-5">
+                                <h2>Headings & Typography</h2>
+                                <hr>
+                                <div class="row mb-4 bg-light">
+                                    <div class="col-md-6">
+                                        <h2>h1. heading</h2>
+                                        <h2>h2. heading</h2>
+                                        <h3>h3. heading</h3>
+                                        <h4>h4. heading</h4>
+                                        <h5>h5. heading</h5>
+                                        <h6>h6. heading</h6>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h1 class="display-1">Display 1</h1>
+                                        <h2 class="display-2">
+                                        Display 2</h1>
+                                        <h3 class="display-3">
+                                        Display 3</h1>
+                                        <h4 class="display-4">
+                                        Display 4</h1>
+                                    </div>
+                                </div>
+                                <h1>Lorem ipsum dolor sit amet consectetuer adipiscing elit</h1>
+                                <p class="lead">Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                                <h2>Aenean commodo ligula eget dolor aenean massa</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                                <ul>
+                                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</li>
+                                    <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</li>
+                                    <li>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</li>
+                                    <li>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.</li>
+                                </ul>
+                                <h3>Cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                                <h4>Donec quam felis ultricies nec pellentesque eu pretium quis sem nlla consequat massa quis enim</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa<strong>strong</strong>. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede<a class="external ext" href="#">link</a> mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
+                                <ol>
+                                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</li>
+                                    <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</li>
+                                    <li>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</li>
+                                    <li>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.</li>
+                                </ol>
+                                <ol>
+                                    <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</li>
+                                    <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</li>
+                                    <li>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</li>
+                                    <li>
+                                        <ol>
+                                            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</li>
+                                            <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</li>
+                                            <li>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</li>
+                                        </ol>
+                                    </li>
+                                    <li>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.</li>
+                                    <li>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</li>
+                                </ol>
+                                <h5>Donec pede justo fringilla vel aliquet nec vulputate eget arcu</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                                <h6>In enim justo rhoncus ut imperdiet a venenatis vitae justo</h6>
+                                <ul>
+                                    <li>Lorem ipsum dolor sit amet</li>
+                                    <li>Consectetur adipiscing elit</li>
+                                    <li>Integer molestie lorem at massa</li>
+                                    <li>Facilisis in pretium nisl aliquet</li>
+                                    <li>
+                                        Nulla volutpat aliquam velit 
+                                        <ul>
+                                            <li>Phasellus iaculis neque</li>
+                                            <li>Purus sodales ultricies</li>
+                                            <li>Vestibulum laoreet porttitor sem</li>
+                                            <li>Ac tristique libero volutpat at</li>
+                                        </ul>
+                                    </li>
+                                    <li>Faucibus porta lacus fringilla vel</li>
+                                    <li>Aenean sit amet erat nunc</li>
+                                    <li>Eget porttitor lorem</li>
+                                </ul>
+                            </div>
+                            <!-- END Headings And Typography -->
+                            <!-- Blockquote -->
+                            <div class="mb-5">
+                                <h2>Blockquote</h2>
+                                <hr>
+                                <blockquote class="blockquote">
+                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                    <footer class="blockquote-footer">Someone famous in<cite title="Source Title">Source Title</cite></footer>
+                                </blockquote>
+                            </div>
+                            <!-- END Blockquote -->
+                            <!-- Tables -->
+                            <div class="mb-5">
+                                <h2>Table</h2>
+                                <hr>
+                                <table class="table mb-4">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table mb-4">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- END Tables -->
+                            <!-- Accordion -->
+                            <div class="mb-5">
+                                <h2>Accordion</h2>
+                                <hr>
+                                <div id="accordion" role="tablist">
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="headingOne">
+                                            <h5 class="mb-0">
+                                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Collapsible Group Item #1
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                                            <div class="card-body">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="headingTwo">
+                                            <h5 class="mb-0">
+                                                <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Collapsible Group Item #2
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+                                            <div class="card-body">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" role="tab" id="headingThree">
+                                            <h5 class="mb-0">
+                                                <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Collapsible Group Item #3
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                                            <div class="card-body">
+                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END Accordion -->
+                            <!-- Image Carousel -->
+                            <div class="mb-5">
+                                <h2>Image Carousel</h2>
+                                <hr>
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img class="d-block w-100" src="http://via.placeholder.com/2000x500/333?text=Slider+1" alt="First slide">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="http://via.placeholder.com/2000x500/555?text=Slider+2" alt="Second slide">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img class="d-block w-100" src="http://via.placeholder.com/2000x500/777?text=Slider+3" alt="Third slide">
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- ENDImage Carousel -->
+                            <!-- List Group -->
+                            <div class="mb-5">
+                                <h2>List Group</h2>
+                                <hr>
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action active">
+                                    Cras justo odio
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                                    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                                    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                                    <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+                                </div>
+                            </div>
+                            <!-- END List Group -->
+                            <!-- Pagination -->
+                            <div class="mb-5">
+                                <h2>Pagination</h2>
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link page-first" href="#">First Page</a></li>
+                                        <li class="page-item"><a class="page-link page-previous" href="#" aria-label="Previous"><i class="fa fa-angle-double-left" aria-hidden="true"></i><span class="sr-only">Previous</span></a>
+                                        </li>
+                                        <li class="page-item page-1"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item page-2"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item page-3 active"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item page-4"><a class="page-link" href="#">4</a></li>
+                                        <li class="page-item"><a class="page-link page-next" href="#" aria-label="Next"><i class="fa fa-angle-double-right" aria-hidden="true"></i><span class="sr-only">Next</span></a>
+                                        </li>
+                                        <li class="page-item page-last"><a class="page-link" href="#">Last Page</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- END Pagination -->
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-secondary">
+                <div class="container">
+                    <h2 class="text-white">Footer Variables</h2>
+                    <div class="card-deck mb-4">
+                        <div class="card bg-light border-0 rounded-0">
+                            <div class="card-body">
+                                <h3 class="card-title">Copyright &amp; Misc.</h3>
+                                <ul class="list-unstyled">
+                                    <li>Copyright &copy; 2018 <a href="http://ee4.local">ee4</a> | Site Designed &amp; Developed by <a href="http://mc2design.com" target="_blank">MC2 Design Group, Inc.</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card bg-light border-0 rounded-0">
+                            <div class="card-body">
+                                <h3 class="card-title">Contact &amp; Social</h3>
+                                <ul>
+                                    <li>Phone: <a href="tel:5555555555">(555) 555-5555</a></li>
+                                    <li>Fax:<a href="tel:7777777777">(777) 777-7777</a></li>
+                                    <li>Email: <a href="mailto:"></a></li>
+                                    <li>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="http://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                                            <li class="list-inline-item"><a href="http://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                            <li class="list-inline-item"><a href="http://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                            <li class="list-inline-item"><a href="http://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                                            <li class="list-inline-item"><a href="http://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                            <li class="list-inline-item"><a href="http://plus.google.com" target="_blank"><i class="fab fa-google-plus"></i></a></li>
+                                            <li class="list-inline-item"><a href="http://pinterest.com" target="_blank"><i class="fab fa-pinterest"></i></a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <address>
+                                            MCSquared<br>
+                                            1311 Mangrove Ave.<br>
+                                            Suite A<br>
+                                            Chico, CA 95926
+                                        </address>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card bg-light border-0 rounded-0">
+                            <div class="card-body">
+                                <h3 class="card-title">Members</h3>
+                                <a class="btn btn-primary" href="http://ee4.local/user_main/login/" role="button"><i class="fa fa-sign-in"></i> Login</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-deck mb-4">
+                        <div class="card bg-light border-0 rounded-0">
+                            <div class="card-body">
+                                <h3 class="card-title">Footer Nav</h3>
+                                <ul>
+                                    <li><a href="" >Internal Page</a></li>
+                                    <li><a href="http://mc2design.com" target="_blank">External Page</a></li>
+                                    <li><a href="/public/uploads/images/pdf-test.pdf" target="_blank">Asset</a></li>
+                                </ul>
+                                <h3 class="card-title">Logo</h3>
+                                <img src="/public/uploads/images/333.png">
+                            </div>
+                        </div>
+                        <div class="card bg-light border-0 rounded-0">
+                            <div class="card-body">
+                                <h3 class="card-title">Date Variables</h3>
+                                Date: October 03, 2018<br>
+                                TimeStamp: <time datetime="2018-10-03">2018-10-03</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.4.2/jquery.fancybox.min.js"></script>
+        <script defer src="/assets/js/script.js"></script>
+    </body>
+</html>
