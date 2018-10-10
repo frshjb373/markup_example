@@ -12,12 +12,11 @@
 */
 
 // featured blog entries block
-.featured-blog-entries {
+.intro-container {
 	p {
-    	font-size: rem-calc(16);
-    	line-height: rem-calc(24);
-    	letter-spacing: rem-calc(1);
-		color: $primary;
+    	font-size: rem-calc(20);
+    	line-height: rem-calc(40);
+    	// color: $light; OR even better, specify color as css class name in html .text-light using bootstrap
 		@include media-breakpoint-down(md) {
 			font-size: rem-calc(12);
 		} 
@@ -25,6 +24,9 @@
 			font-size: rem-calc(10);
 			font-weight: normal;
 		} 
+		@include media-breakpoint-up(md800) {
+			text-decoration: underline;
+		}
 	}
 }
 
