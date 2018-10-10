@@ -1,6 +1,4 @@
 // include overrides from bootstrap/_variables.scss here
-
-
 $primary: #A7D9BB;
 $secondary: #e98f9d;
 $success: #65ff9f;
@@ -16,24 +14,20 @@ $theme-colors: (
  	"cool": #2a3f81
 );
  
-
 /* 
 We prefer to keep breakpoints limited to Bootstrap's default, but if you need to add one, please use override here:
 */
 $grid-breakpoints: (
   	xs: 0,
-	// new breakpoint here:
-
   	sm: 576px,
   	md: 768px,
+  	// new breakpoint here:
   	md800: 800px,
   	lg: 992px,
   	xl: 1200px
 ); 
 
-
 // add custom fonts
-
 $font-family-sans-serif: 'Open Sans', sans-serif;
 $headings-font-family: 'Roboto', sans-serif;
 

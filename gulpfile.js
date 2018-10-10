@@ -8,7 +8,8 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload');
 
 var jsSources = [
-        'assets/src_assets/js/mc2_script.js'
+        'assets/src_assets/js/mc2_script.js',
+        'assets/src_assets/js/minical.js'
     ],
     sassSources = [
         'assets/src_assets/scss/styles.scss'
