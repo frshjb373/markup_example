@@ -2,7 +2,7 @@
 ## File Structure
 ```
 /node_modules
-	--
+	any packages pulled through npm.
 /assets
 	/css
 		compiled styles.css and styles.css.map
@@ -11,25 +11,26 @@
 	/images
 	/src_assets
 		/css
+		 	/vendor
+		 		vendor folders .css files (animate.css, hover.css, etc.)
 		/js
-			/packs
-				--
-			fontawesome.js
-			jquery.fancybox.js
-			mc2_script.js
-			minical.js
+			/vendor
+				vendor folders that include .js files (jquery.fancybox.js, fontawesome.js, etc.)
 		/scss
-			_custom-styles.scss
-			_custom-variables.scss
-			_unit.scss
-			_solspace_calendar.scss
-			_styles.scss
+			/vendor
+				vendor folders that include .scss files
+			_custom-styles.scss (custom styles and bootstrap overrides)
+			_custom-variables.scss (custom variables and bootstrap variable overrides)
+			_unit.scss (calcutates pixels into rems)
+			_solspace_calendar.scss (used for ExpressionEngine Calendar addon)
+			_styles.scss (calls all imports)
 gulpfile.js
 package.json
 ```
- 1. run `npm update` to download files from
+ 1. run `npm update` to download files from package.json
  2. install gulp
- 3. run `gulp`
+ 3. run `gulp` (note: must be Gulp 4.0 or newer)
+
 
  
 

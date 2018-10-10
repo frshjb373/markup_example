@@ -8,15 +8,10 @@ var gulp = require('gulp'),
     livereload = require('gulp-livereload');
 
 var jsSources = [
-        'assets/src_assets/js/mc2_script.js',
-        'assets/src_assets/js/minical.js',
-        'assets/src_assets/js/packs/*.js',
-        'assets/src_assets/js/fontawesome.js'
-        
+        'assets/src_assets/js/mc2_script.js'
     ],
     sassSources = [
-        'assets/src_assets/scss/styles.scss',
-        'assets/src_assets/scss/solspace_calendar.scss'
+        'assets/src_assets/scss/styles.scss'
         
     ],
     sassDir = [
