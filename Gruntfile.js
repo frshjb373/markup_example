@@ -345,10 +345,11 @@ module.exports = function(grunt) {
         options: {
           server: {
             baseDir: PathConfig.templatesDir,
-            index: "index.html",
-            directory: true,
+            routes: {
+              // url : file path relative to Gruntfile.js
+              '/assets': 'public_html/assets/',
+            },
           },
-          server: PathConfig.templatesDir,
           watchTask: true,
         }
       },
@@ -363,30 +364,11 @@ module.exports = function(grunt) {
           ],
         },
         options: {
-          proxy: "http://mc2.local/",
+          proxy: "<%= config.bsProxy %>",
           watchTask: true,
         }
       },
     },
-
-    //Keep multiple browsers & devices in sync when building websites.
-    /*
-      browserSync: {
-      dev: {
-      bsFiles: {
-      src : ['*.html','<%= config.cssDir %>*.css', '*.css']
-      },
-      options: {
-      server: {
-      baseDir: "../",
-      index: "index.html",
-      directory: true
-      },
-      watchTask: true
-      }
-      }
-      },
-    */
 
     notify: {
       options: {
@@ -412,7 +394,6 @@ module.exports = function(grunt) {
     //         cwd: './',
     //         src: [
     //           '**',
-
     //           '!scss/**',
     //           '!**/**/.svn/**',
     //           '!css/**',
@@ -492,7 +473,8 @@ module.exports = function(grunt) {
   //watch
   grunt.registerTask('w', ['sass:dev', 'uglify:dev', 'copy:js', 'copy:fontawesome', 'watch']);
   //browser sync
-  grunt.registerTask('bs', ['browserSync:file']);
+  grunt.registerTask('bs', ['browserSync:file_based', 'watch']);
+  grunt.registerTask('bsp', ['browserSync:server_based', 'watch']);
 
   //watch + browser sync
   grunt.registerTask('dev', ['sass:dev', 'uglify:dev', 'copy:js', 'copy:fontawesome', 'browserSync', 'watch']);
@@ -512,14 +494,4 @@ module.exports = function(grunt) {
 
   //final build
   grunt.registerTask('dist', ['clean:temp', 'sass:min', 'uglify:dist', 'copy:js', 'copy:fontawesome', 'imgmin', 'cssbeauty', 'purgecss:dist']);
-
 };
-
-/*
-
-dev:  clean:temp sass:dev uglify:dev copy:js copy:fontawesome
-dist: clean:temp sass:min uglify:dist copy:js copy:fontawesome imgmin, cssbeauty, purgecss
-
-*/
-
-

@@ -79,6 +79,14 @@ module.exports = {
   faSourceFonts: 'node_modules/@fortawesome/fontawesome-free/webfonts/*',
 
   /*
+   * BrowserSync
+   * -----------
+   * bsProxy: set the url for when not using browsersync's server
+   */
+  bsProxy: 'http://www.example.com',
+
+
+  /*
    * Images
    */
   imgDir:           'public_html/assets/images/',
