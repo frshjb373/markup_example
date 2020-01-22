@@ -14,13 +14,19 @@ module.exports = function(grunt) {
 
     //clean files
     clean: {
-      options: { force: true },
+      options: {
+        // force: true,
+        // 'no-write': true,
+      },
       temp: {
         src: [
-          "<%= config.cssDir %>**/*.map",
-          "<%= config.imgDir %>",
-          "<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css.map",
-          //"./jpgtmp.jpg",
+          // "<%= config.cssDir %>**/*.map",
+          // "<%= config.imgDir %>",
+          // "<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css.map",
+          "<%= config.cssDir %>**/*",
+          "<%= config.jsMainFileDir %>**/*",
+          "<%= config.imgDir %>**/*",
+          "<%= config.faDest %>**/*",
         ]
       }
     },
@@ -63,7 +69,6 @@ module.exports = function(grunt) {
 
     //sass
     sass: {
-      // options: PathConfig.hasBower,
       options: {
         implementation: sass,
         sourceMap: true,
@@ -72,7 +77,8 @@ module.exports = function(grunt) {
       dev: {
         options: {
           sourceMap: true,
-          outputStyle: 'nested',
+          // outputStyle: 'nested',
+          style: 'nested',
         },
         files: [
           {
@@ -95,7 +101,8 @@ module.exports = function(grunt) {
         options: {
           sourceMap: false,
           // outputStyle: 'compressed',
-          outputStyle: 'nested',
+          // outputStyle: 'nested',
+          style: 'compressed',
         },
         files: [
           {
@@ -135,13 +142,16 @@ module.exports = function(grunt) {
       }
     },
 
-    //Uglify JS
-    uglify: {
+    // Version of uglify that supports ES6
+    terser: {
       dev: {
         options: {
+          toplevel: true,
           mangle: false,
           compress: false,
-          beautify: true,
+          output: {
+            comments: true,
+          },
           sourceMap: {
             includeSources: true
           },
@@ -152,9 +162,9 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
+          toplevel: true,
           mangle: false,
           compress: true,
-          beautify: false,
           sourceMap: {
             includeSources: true
           },
@@ -163,6 +173,31 @@ module.exports = function(grunt) {
           '<%= config.jsMainFileDir %>/<%= config.jsMainFileName %>.js': PathConfig.jsFiles,
         },
       },
+    },
+
+    babel: {
+      options: {
+      },
+      dev: {
+        options: {
+          sourceMap: true,
+          presets: ['@babel/preset-env'],
+        },
+        files: {
+          // 'destination': 'source',
+          '<%= config.jsMainFileDir %>/<%= config.jsMainFileName %>.js': '<%= config.jsMainFileDir %>/<%= config.jsMainFileName %>.js',
+        }
+      },
+      dist: {
+        options: {
+          sourceMap: false,
+          presets: ['@babel/preset-env', 'minify'],
+        },
+        files: {
+          // 'destination': 'source',
+          '<%= config.jsMainFileDir %>/<%= config.jsMainFileName %>.js': '<%= config.jsMainFileDir %>/<%= config.jsMainFileName %>.js',
+        }
+      }
     },
 
     //watcher project
@@ -178,13 +213,13 @@ module.exports = function(grunt) {
           spawn: false
         }
       },
-      svgSprites: {
-        files: ['<%= config.imgSourceDir %>svg-icons/*.*'],
-        tasks: ['svgstore', 'svg2string'],
-        options: {
-          spawn: false
-        }
-      },
+      // svgSprites: {
+      //   files: ['<%= config.imgSourceDir %>svg-icons/*.*'],
+      //   tasks: ['svgstore', 'svg2string'],
+      //   options: {
+      //     spawn: false
+      //   }
+      // },
       css: {
         files: ['<%= config.sassDir %>**/*.scss'],
         tasks: ['sass:dev', 'postcss:dev'],
@@ -192,9 +227,16 @@ module.exports = function(grunt) {
           spawn: false,
         }
       },
-      js: {
+      jsUgly: {
         files: ['<%= config.jsDir %>**/*.js'],
-        tasks: ['uglify:dev'],
+        tasks: ['terser:dev'],
+        options: {
+          spawn: false,
+        }
+      },
+      jsBabel: {
+        files: ['<%= config.jsMainFileDir %>**/*.js'],
+        tasks: ['babel:dev'],
         options: {
           spawn: false,
         }
@@ -281,36 +323,36 @@ module.exports = function(grunt) {
       }
     },
 
-    svgstore: {
-      options: {
-        prefix : 'icon-', // This will prefix each ID
-        svg: { // will add and overide the the default xmlns="http://www.w3.org/2000/svg" attribute to the resulting SVG
-          viewBox : '0 0 100 100',
-          xmlns: 'http://www.w3.org/2000/svg'
-        },
-        cleanup: ['fill']
-      },
-      your_target: {
-        files: {
-          '<%= config.imgDir %>svg-sprites/sprite.svg': ['<%= config.imgDir %>svg-icons/*.svg'],
-        },
-      },
-    },
+    // svgstore: {
+    //   options: {
+    //     prefix : 'icon-', // This will prefix each ID
+    //     svg: { // will add and overide the the default xmlns="http://www.w3.org/2000/svg" attribute to the resulting SVG
+    //       viewBox : '0 0 100 100',
+    //       xmlns: 'http://www.w3.org/2000/svg'
+    //     },
+    //     cleanup: ['fill']
+    //   },
+    //   your_target: {
+    //     files: {
+    //       '<%= config.imgDir %>svg-sprites/sprite.svg': ['<%= config.imgDir %>svg-icons/*.svg'],
+    //     },
+    //   },
+    // },
 
-    svg2string: {
-      elements: {
-        options: {
-          template: '(window.SVG_SPRITES = window.SVG_SPRITES || {})["[%= filename %]"] = [%= content %];',
-          wrapLines: false
-        },
-        files: {
-          '<%= config.jsDir %>svg-sprites.js': [
-            // '<%= config.imgDir %>sprite.svg',
-            '<%= config.imgDir %>svg-sprites/sprite.svg'
-          ]
-        }
-      }
-    },
+    // svg2string: {
+    //   elements: {
+    //     options: {
+    //       template: '(window.SVG_SPRITES = window.SVG_SPRITES || {})["[%= filename %]"] = [%= content %];',
+    //       wrapLines: false
+    //     },
+    //     files: {
+    //       '<%= config.jsDir %>svg-sprites.js': [
+    //         // '<%= config.imgDir %>sprite.svg',
+    //         '<%= config.imgDir %>svg-sprites/sprite.svg'
+    //       ]
+    //     }
+    //   }
+    // },
 
     // lossy image optimizing (compress png images with pngquant)
     pngmin: {
@@ -338,6 +380,7 @@ module.exports = function(grunt) {
             '*.html',
             '<%= config.cssDir %>*.css',
             '*.css',
+            '<%= config.jsMainFileDir %>*.js',
             '<%= config.templatesDir %>**/**/*.*',
             '<%= config.templatesDir %>*.*',
           ],
@@ -359,6 +402,7 @@ module.exports = function(grunt) {
             '*.html',
             '<%= config.cssDir %>*.css',
             '*.css',
+            '<%= config.jsMainFileDir %>*.js',
             '<%= config.templatesDir %>**/**/*.*',
             '<%= config.templatesDir %>*.*',
           ],
@@ -383,26 +427,6 @@ module.exports = function(grunt) {
         }
       },
     },
-
-    //copy files
-    // copy: {
-    //   dist: {
-    //     files: [
-    //       {
-    //         expand: true,
-    //         dot: true,
-    //         cwd: './',
-    //         src: [
-    //           '**',
-    //           '!scss/**',
-    //           '!**/**/.svn/**',
-    //           '!css/**',
-    //         ],
-    //         dest: '<%= config.distDir %>'
-    //       }
-    //     ]
-    //   },
-    // },
 
     csscomb: {
       all: {
@@ -470,17 +494,22 @@ module.exports = function(grunt) {
     },
   });
 
-  //watch
-  grunt.registerTask('w', ['sass:dev', 'uglify:dev', 'copy:js', 'copy:fontawesome', 'watch']);
-  //browser sync
+
+  // watch
+  grunt.registerTask('w', ['sass:dev', 'terser:dev', 'copy:js', 'copy:fontawesome', 'watch']);
+  //  with babel
+  grunt.registerTask('wb', ['sass:dev', 'copy:js', 'terser:dev', 'babel:dev', 'copy:fontawesome', 'watch']);
+
+  // browser sync
   grunt.registerTask('bs', ['browserSync:file_based', 'watch']);
   grunt.registerTask('bsp', ['browserSync:server_based', 'watch']);
 
-  //watch + browser sync
-  grunt.registerTask('dev', ['sass:dev', 'uglify:dev', 'copy:js', 'copy:fontawesome', 'browserSync', 'watch']);
+  // browsersync + watch
+  grunt.registerTask('dev', ['sass:dev', 'terser:dev', 'copy:js', 'copy:fontawesome', 'bs']);
+  grunt.registerTask('devp', ['sass:dev', 'terser:dev', 'babel:dev', 'copy:js', 'copy:fontawesome', 'bsp']);
 
   //create svg sprite
-  grunt.registerTask('svgsprite', ['svgmin', 'svgstore', 'svg2string']);
+  // grunt.registerTask('svgsprite', ['svgmin', 'svgstore', 'svg2string']);
 
   grunt.registerTask('default', ['dev']);
 
@@ -493,5 +522,8 @@ module.exports = function(grunt) {
   grunt.registerTask('purge', ['purgecss:dist']);
 
   //final build
-  grunt.registerTask('dist', ['clean:temp', 'sass:min', 'uglify:dist', 'copy:js', 'copy:fontawesome', 'imgmin', 'cssbeauty', 'purgecss:dist']);
+  grunt.registerTask('dist', ['clean:temp', 'sass:min', 'terser:dist', 'copy:js', 'copy:fontawesome', 'imgmin', 'cssbeauty', 'purgecss:dist']);
+
+  grunt.registerTask('distb', ['clean:temp', 'sass:min', 'terser:dist', 'copy:js', 'copy:fontawesome', 'imgmin', 'cssbeauty', 'purgecss:dist', 'babel:dist']);
+
 };

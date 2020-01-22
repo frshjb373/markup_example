@@ -49,8 +49,9 @@ module.exports = {
    *   Destination js dir.
    *
    * jsFiles (array)
-   *   These are processed by uglify and concated togeather.  The
-   *   created file is named main.min.js and placed in `jsMainFileDir`.
+   *   These are processed by uglify and concated togeather in the
+   *   order they are in the array.  The created file is named main.js
+   *   and placed in `jsMainFileDir`.
    *
    * jsVendorFiles (array)
    *   Any files in this array are copied directly to `jsMainFileDir`
@@ -85,17 +86,15 @@ module.exports = {
    */
   bsProxy: 'http://www.example.com',
 
-
   /*
    * Images
    */
+  imgSourceDir:     'src/images/',
   imgDir:           'public_html/assets/images/',
-  imgSourceDir:     'src/sourceimages/',
 
   // location of dir to server files from when using browserSync when
   // not using a server.
-  // templatesDir:     'public_html/library/user/templates/default_site/site.group/',
-  templatesDir: '/Users/sheldon/mc2/boilerplate/grunt/public_html/library/user/templates/default_site/site.group',
+  templatesDir:     'public_html/library/user/templates/default_site/site.group/',
+
   nodeModulesBootstrapDist: 'node_modules/bootstrap/dist/',
-  nodeModulesBootstrapScss: 'node_modules/bootstrap/scss/',
-};
+}

@@ -1,2 +1,5 @@
 node_modules
 grunt.org
+package.json
+package-lock.json
+public_html/assets

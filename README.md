@@ -2,29 +2,56 @@
 ## Overview
 
 All vendor files are pulled from the `node_modules` dir.  In this
-repo, jquery and bootstrap are configured.
+repo, jQuery and bootstrap are configured.
 
-All source files are in `src` except for the html files which should
-go into`public_html/library/user/templates/default_site/site.group/`.
-This is to simulate the structure of ExpressionEngine.
+All files that you will edit are in the `src` dir *except* for the HTML
+files which should go into
+`public_html/library/user/templates/default_site/site.group/`.  This
+is to simulate the structure of ExpressionEngine.
 
-When grunt's tasks are run, the generated files are put in
-`public_html/assets/...`.  The following files are put into `assets/...`.
+When grunt's tasks are run, files from `src` are processed and put in
+`public_html/assets/...`.
 
-### CSS
+Note that when `grunt dist` is run, **all** files in `assets` will be
+deleted and then rebuilt with new files.  Any files manually put in
+assets will be deleted.
+
+### src/
+
+##### SCSS
+- `scss/main.scss` &mdash;
+  imports _bootstrap.scss
+- `scss/_bootstrap.scss` &mdash;
+  imports bootstrap from node_modules and _bootstrap_custom.scss
+- `scss/_bootstrap_custom.scss` &mdash;
+  custom settings for bootstrap
+
+##### JS
+- `js/main.js` &mdash;
+  MC2's js code
+- `js/jquery.main.js` &mdash;
+  Contractor's js code
+
+##### Images
+Images placed here will be processed by imagemin or svgmin and placed
+in `public_html/images`.
+
+### public_html/assets/
+
+##### CSS
 - `main.css`: has bootstrap imported into it.
 - `main.purged.css`: an experimental purged version of main.css using
-  purgecss.  Since purgecss can sometimes remove to much css its a
-  seperate file.
+  purgecss.  Since purgecss can sometimes remove to much css it's a
+  separate file.
 
-### JS
-- `main.js`: The main js file which concats `src/jquery.main.js` and
+##### JS
+- `main.js`: The main JS file which concats `src/jquery.main.js` and
   `src/main.js` and uglifies it.  It will be minified if `grunt dist`
   is used.
-- `jquery-?.?.?.min.js`: Jquery which is copied from node_modules to
+- `jquery-?.?.?.min.js`: jQuery which is copied from node_modules to
   `assests/js`.
 
-### Fonts
+##### Fonts
 The main.scss is configured to use fontawsome.  Fontawesome's fonts
 are copied from node_modules and put into `assets/webfonts`.
 
@@ -40,7 +67,7 @@ In the project root in a bash terminal run:
 
 Alternatively you can use an existing `package.json` and run `npm
 install` yourself.  Review `setup.bash` to ensure you have all the
-requried packages.
+required packages.
 
 If you wish to view the `.../sites.group/index.html` via a
 `file://...` url, the link and script tags in the head need to be
@@ -50,20 +77,23 @@ relative paths.
 
 ## BrowserSync
 
-BrowserSync is setup to use it's own server by default.  Setting
-`bsProxy` in `grunt-settings.js` will set the proxy for BrowserSync in
-the gruntfile.  You can then use `grunt bsp`.
+BrowserSync is setup to use it's own server by default.  If you want
+to use a different server, set `bsProxy` in `grunt-settings.js`.  This
+will set the proxy for BrowserSync in `Gruntfile.js`.  You can then use
+`grunt devp` instead of `grunt dev`.
 
+<!--
+Note: If JS looks like it isn't reloading, I've found that going to the UI
+url (http://localhost:3001) and toggling some settings makes it work.
+-->
 
 ## Grunt Commands
 
-- `grunt w`<br>
-..Produce un-minified files then watch for changes.
-- `grunt bs`<br>
-..BrowserSync with watch.
-- `grunt bsp`<br>
-..Same as above but uses the proxy instead.
-- `grunt dev`<br>
-..Same as w, but also enables browserSync.
-- `grunt dist`<br>
-.. Produce minified files.
+- `grunt w` &mdash;
+  Produce un-minified files then watch for changes.
+- `grunt dev` &mdash;
+  Same as w, but also enables BrowserSync.
+- `grunt devp` &mdash;
+  Same as above but uses the proxy instead.
+- `grunt dist` &mdash;
+   Produce minified files.
