@@ -55,6 +55,37 @@ in `public_html/images`.
 The main.scss is configured to use fontawsome.  Fontawesome's fonts
 are copied from node_modules and put into `assets/webfonts`.
 
+### File structure
+```
+src
+├── images
+│   └── <any images...>
+├── js
+│   ├── jquery.main.js
+│   └── main.js
+└── scss
+    ├── _bootstrap-custom.scss
+    ├── _bootstrap.scss
+    └── main.scss
+
+public_html
+├── assets
+│   ├── css
+│   │   ├── main.css
+│   │   └── main.css.map
+│   ├── js
+│   │   ├── jquery.min.js
+│   │   ├── main.js
+│   │   └── main.js.map
+│   └── webfonts
+│       └── <many files...>
+└── library
+    └── user
+        └── templates
+            └── default_site
+                └── site.group
+                    └── index.html
+```
 
 ## Setup
 
