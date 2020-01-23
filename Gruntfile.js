@@ -227,7 +227,7 @@ module.exports = function(grunt) {
           spawn: false,
         }
       },
-      jsUgly: {
+      jsTerser: {
         files: ['<%= config.jsDir %>**/*.js'],
         tasks: ['terser:dev'],
         options: {

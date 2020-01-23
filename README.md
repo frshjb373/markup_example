@@ -56,26 +56,31 @@ The main.scss is configured to use fontawsome.  Fontawesome's fonts
 are copied from node_modules and put into `assets/webfonts`.
 
 
-## Initial Setup
+## Setup
 
-`setup.bash` in `scripts/` can be used to start a new project.  This
-will create a new `package.json` and install several packages.  This
-will give you the most recent versions.
+1. **Install packages**
 
-In the project root in a bash terminal run:
-`./scripts/setup.bash`
+   `setup.bash` in `scripts/` can be used to start a new project.  This
+   will create a new `package.json` and install several packages.  This
+   will give you the most recent versions.
 
-Alternatively you can use an existing `package.json` and run `npm
-install` yourself.  Review `setup.bash` to ensure you have all the
-required packages.
+   In the project root in a bash terminal run:
+   `./scripts/setup.bash`
 
-If you wish to view the `.../sites.group/index.html` via a
-`file://...` url, the link and script tags in the head need to be
-changed to the commented ones that access the assets with the long
-relative paths.
+   Alternatively you can use an existing `package.json` and run `npm
+   install` yourself.  Review `setup.bash` to ensure you have all the
+   required packages.
 
+2. **View test page**
 
-## BrowserSync
+   After the packages are installed you can run `grunt dev` to view the
+   test page (`.../sites.group/index.html`).
+
+   If you wish to view the test page via a `file://...` url, the link
+   and script tags in the head need to be changed to the commented
+   ones that access the assets with the long relative paths.
+
+#### BrowserSync
 
 BrowserSync is setup to use it's own server by default.  If you want
 to use a different server, set `bsProxy` in `grunt-settings.js`.  This
