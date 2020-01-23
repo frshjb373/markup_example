@@ -73,10 +73,14 @@ public_html
 │   ├── css
 │   │   ├── main.css
 │   │   └── main.css.map
+│   ├── images
+│   │   └── <images from src/...>
 │   ├── js
+│   │   ├── bootstrap.min.js
 │   │   ├── jquery.min.js
 │   │   ├── main.js
-│   │   └── main.js.map
+│   │   ├── main.js.map
+│   │   └── popper.min.js
 │   └── webfonts
 │       └── <many files...>
 └── library
