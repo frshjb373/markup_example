@@ -33,8 +33,8 @@ assets will be deleted.
   Contractor's js code
 
 ##### Images
-Images placed here will be processed by imagemin or svgmin and placed
-in `public_html/images`.
+- Images placed here will be processed by imagemin or svgmin and copied
+  to `public_html/assets/images`.
 
 ### public_html/assets/
 
