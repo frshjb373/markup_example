@@ -1,20 +1,23 @@
 
 ## Overview
 
-All vendor files are pulled from the `node_modules` dir.  In this
-repo, jQuery and bootstrap are configured.
+- Grunt will use the settings in `grunt-settings.js`.  All the
+  variables you need to edit will be here.
 
-All files that you will edit are in the `src` dir *except* for the HTML
-files which should go into
-`public_html/library/user/templates/default_site/site.group/`.  This
-is to simulate the structure of ExpressionEngine.
+- All vendor files are pulled from the `node_modules` dir.  In this
+  repo, jQuery and bootstrap are configured.
 
-When grunt's tasks are run, files from `src` are processed and put in
-`public_html/assets/...`.
+- All files that you will edit are in the `src` dir *except* for the
+  HTML files which should go into
+  `public_html/library/user/templates/default_site/site.group/`.
+  This is to simulate the structure of ExpressionEngine.
 
-Note that when `grunt dist` is run, **all** files in `assets` will be
-deleted and then rebuilt with new files.  Any files manually put in
-assets will be deleted.
+- When grunt's tasks are run, files from `src` are processed and put
+  in `public_html/assets/...`.
+
+**Warning:** When `grunt dist` is run, **all** files in
+`public_html/assets` will be deleted and then rebuilt with new files.
+Any files manually put in assets will be deleted.
 
 ### src/
 
@@ -36,6 +39,13 @@ assets will be deleted.
 - Images placed here will be processed by imagemin or svgmin and copied
   to `public_html/assets/images`.
 
+##### Fonts
+By default, this dir is ignored, because fonts are copied from
+Fontawsome's dir in node_modules.  If you want to put fonts in here
+instead, edit `fontSource` var in `grunt-settings.js` to point here
+instead.  Then any file in here will be copied to `...assets/fonts`.
+
+
 ### public_html/assets/
 
 ##### CSS
@@ -55,41 +65,6 @@ assets will be deleted.
 The main.scss is configured to use fontawsome.  Fontawesome's fonts
 are copied from node_modules and put into `assets/webfonts`.
 
-### File structure
-```
-src
-├── images
-│   └── <any images...>
-├── js
-│   ├── jquery.main.js
-│   └── main.js
-└── scss
-    ├── _bootstrap-custom.scss
-    ├── _bootstrap.scss
-    └── main.scss
-
-public_html
-├── assets
-│   ├── css
-│   │   ├── main.css
-│   │   └── main.css.map
-│   ├── images
-│   │   └── <images from src/...>
-│   ├── js
-│   │   ├── bootstrap.min.js
-│   │   ├── jquery.min.js
-│   │   ├── main.js
-│   │   ├── main.js.map
-│   │   └── popper.min.js
-│   └── webfonts
-│       └── <many files...>
-└── library
-    └── user
-        └── templates
-            └── default_site
-                └── site.group
-                    └── index.html
-```
 
 ## Setup
 
@@ -122,10 +97,6 @@ to use a different server, set `bsProxy` in `grunt-settings.js`.  This
 will set the proxy for BrowserSync in `Gruntfile.js`.  You can then use
 `grunt devp` instead of `grunt dev`.
 
-<!--
-Note: If JS looks like it isn't reloading, I've found that going to the UI
-url (http://localhost:3001) and toggling some settings makes it work.
--->
 
 ## Grunt Commands
 
@@ -134,6 +105,46 @@ url (http://localhost:3001) and toggling some settings makes it work.
 - `grunt dev` &mdash;
   Same as w, but also enables BrowserSync.
 - `grunt devp` &mdash;
-  Same as above but uses the proxy instead.
+  Same as dev, but uses a proxy for BrowserSync instead.
 - `grunt dist` &mdash;
    Produce minified files.
+
+## File structure
+```
+Project Root
+├── public_html
+│   ├── assets
+│   │   ├── css
+│   │   │   ├── main.css
+│   │   │   └── main.css.map
+│   │   ├── fonts
+│   │   │   └── <any fonts>
+│   │   ├── images
+│   │   │   └── <images from src>
+│   │   └── js
+│   │       ├── bootstrap.min.js
+│   │       ├── main.js
+│   │       ├── main.js.map
+│   │       └── popper.min.js
+│   └── library
+│       └── user
+│           └── templates
+│               └── default_site
+│                   └── site.group
+│                       └── index.html
+└── src
+    ├── fonts
+    ├── images
+    │   ├── favicon.png
+    │   ├── logo.svg
+    │   ├── placeholder-lg.png
+    │   └── placeholder-sm.png
+    ├── js
+    │   ├── jquery.main.js
+    │   └── main.js
+    └── scss
+        ├── _bootstrap-custom.scss
+        ├── _bootstrap.scss
+        └── main.scss
+```
+

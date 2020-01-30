@@ -12,7 +12,6 @@ install_packages() {
 	}
 	EOF
 
-    # grunt-contrib-uglify \
     npm install \
         @fortawesome/fontawesome-free \
         autoprefixer-core \
@@ -52,8 +51,9 @@ install_packages() {
 echo
 echo "This will overwrite package.json, delete node_modules,"
 echo "and install new packages in the current directory."
+echo
 while true; do
-    read -p "  Continue? [y/n]: " yn
+    read -p "Continue? [y/n]: " yn
     case $yn in
         [Yy]* ) install_packages; break;;
         [Nn]* ) echo 'Doing nothing, bye.'; exit;;

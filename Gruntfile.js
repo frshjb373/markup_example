@@ -1,33 +1,33 @@
 /* global module require */
 
+
 module.exports = function(grunt) {
-  const PathConfig = require('./grunt-settings.js')
+  const config = require('./grunt-settings.js')
   const sass = require('node-sass')
+  var err = function(msg){
+    grunt.fail.fatal(msg)
+  }
+
   require('load-grunt-tasks')(grunt)
   grunt.loadNpmTasks('grunt-purgecss')
 
   // tasks
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-
-    config: PathConfig,
+    config: config,
 
     //clean files
     clean: {
       options: {
-        // force: true,
         // 'no-write': true,
       },
-      temp: {
+      assets: {
         src: [
-          // "<%= config.cssDir %>**/*.map",
-          // "<%= config.imgDir %>",
-          // "<%= config.cssMainFileDir %><%= config.cssMainFileName %>.css.map",
-          "<%= config.cssDir %>**/*",
-          "<%= config.jsMainFileDir %>**/*",
-          "<%= config.imgDir %>**/*",
-          "<%= config.faDest %>**/*",
-        ]
+          (config.cssDir) ? config.cssDir : err('cssDir not set'),
+          (config.jsMainFileDir) ? config.jsMainFileDir : err('jsMainFileDir not set'),
+          (config.imgDir) ? config.imgDir : err('imgDir not set'),
+          (config.fontDest) ? config.fontDest : err('fontDest not set'),
+        ],
       }
     },
 
@@ -77,7 +77,6 @@ module.exports = function(grunt) {
       dev: {
         options: {
           sourceMap: true,
-          // outputStyle: 'nested',
           style: 'nested',
         },
         files: [
@@ -100,8 +99,6 @@ module.exports = function(grunt) {
       dist: {
         options: {
           sourceMap: false,
-          // outputStyle: 'compressed',
-          // outputStyle: 'nested',
           style: 'compressed',
         },
         files: [
@@ -157,7 +154,7 @@ module.exports = function(grunt) {
           },
         },
         files: {
-          '<%= config.jsMainFileDir %>/<%= config.jsMainFileName %>.js': PathConfig.jsFiles,
+          '<%= config.jsMainFileDir %>/<%= config.jsMainFileName %>.js': config.jsFiles,
         },
       },
       dist: {
@@ -170,7 +167,7 @@ module.exports = function(grunt) {
           },
         },
         files: {
-          '<%= config.jsMainFileDir %>/<%= config.jsMainFileName %>.js': PathConfig.jsFiles,
+          '<%= config.jsMainFileDir %>/<%= config.jsMainFileName %>.js': config.jsFiles,
         },
       },
     },
@@ -249,7 +246,7 @@ module.exports = function(grunt) {
         }
       },
       vendorJs: {
-        files: PathConfig.jsVendorFiles,
+        files: config.jsVendorFiles,
         tasks: ['copy:js'],
         options: {
           spawn: false,
@@ -276,15 +273,15 @@ module.exports = function(grunt) {
       },
       js: {
         nonull: true,
-        src: PathConfig.jsVendorFiles,
-        dest: PathConfig.jsMainFileDir,
+        src: config.jsVendorFiles,
+        dest: config.jsMainFileDir,
         flatten: true,
         expand: true,
       },
-      fontawesome:{
+      fonts:{
         nonull: true,
-        src: PathConfig.faSourceFonts,
-        dest: PathConfig.faDest,
+        src: config.fontSource,
+        dest: config.fontDest,
         flatten: true,
         expand: true,
       },
@@ -383,11 +380,12 @@ module.exports = function(grunt) {
             '<%= config.jsMainFileDir %>*.js',
             '<%= config.templatesDir %>**/**/*.*',
             '<%= config.templatesDir %>*.*',
+            '<%= config.fontDest %>/*',
           ],
         },
         options: {
           server: {
-            baseDir: PathConfig.templatesDir,
+            baseDir: config.templatesDir,
             routes: {
               // url : file path relative to Gruntfile.js
               '/assets': 'public_html/assets/',
@@ -405,10 +403,11 @@ module.exports = function(grunt) {
             '<%= config.jsMainFileDir %>*.js',
             '<%= config.templatesDir %>**/**/*.*',
             '<%= config.templatesDir %>*.*',
+            '<%= config.fontDest %>/*',
           ],
         },
         options: {
-          proxy: "<%= config.bsProxy %>",
+          proxy: config.bsProxy,
           watchTask: true,
         }
       },
@@ -481,14 +480,13 @@ module.exports = function(grunt) {
           content: [
             '<%= config.templatesDir %>/**/*.html',
           ]
-          .concat(PathConfig.jsFiles)
-          .concat(PathConfig.jsVendorFiles),
+          .concat(config.jsFiles)
+          .concat(config.jsVendorFiles),
         },
         files: {
           // 'destination css': 'source css'
           '<%= config.cssDir %><%= config.cssMainFileName %>.purged.css':
             '<%= config.cssDir %><%= config.cssMainFileName %>.css'
-
         },
       },
     },
@@ -496,17 +494,41 @@ module.exports = function(grunt) {
 
 
   // watch
-  grunt.registerTask('w', ['sass:dev', 'terser:dev', 'copy:js', 'copy:fontawesome', 'watch']);
-  //  with babel
-  grunt.registerTask('wb', ['sass:dev', 'copy:js', 'terser:dev', 'babel:dev', 'copy:fontawesome', 'watch']);
+  grunt.registerTask(
+    'w',
+    'Watch src for changes',
+    ['sass:dev', 'terser:dev', 'newer:copy:js', 'newer:copy:fonts', 'watch']
+  );
+  // watch with babel
+  grunt.registerTask(
+    'wb',
+    'Watch src for changes and use Babel instead of Terser',
+    ['sass:dev', 'newer:copy:js', 'terser:dev', 'babel:dev', 'newer:copy:fonts', 'watch']
+  );
 
   // browser sync
-  grunt.registerTask('bs', ['browserSync:file_based', 'watch']);
-  grunt.registerTask('bsp', ['browserSync:server_based', 'watch']);
+  grunt.registerTask(
+    'bs',
+    'BrowserSink not using a proxy',
+    ['browserSync:file_based', 'watch']
+  );
+  grunt.registerTask(
+    'bsp',
+    'BrowserSync using a proxy',
+    ['browserSync:server_based', 'watch']
+  );
 
   // browsersync + watch
-  grunt.registerTask('dev', ['sass:dev', 'terser:dev', 'copy:js', 'copy:fontawesome', 'bs']);
-  grunt.registerTask('devp', ['sass:dev', 'terser:dev', 'babel:dev', 'copy:js', 'copy:fontawesome', 'bsp']);
+  grunt.registerTask(
+    'dev',
+    'Non minified files with BrowserSync and watch',
+    ['sass:dev', 'terser:dev', 'newer:copy:js', 'newer:copy:images', 'newer:copy:fonts', 'bs']
+  );
+  grunt.registerTask(
+    'devp',
+    'Same as dev but BrowserSync uses a proxy',
+    ['sass:dev', 'terser:dev', 'newer:copy:js', 'newer:copy:images', 'newer:copy:fonts', 'bsp']
+  );
 
   //create svg sprite
   // grunt.registerTask('svgsprite', ['svgmin', 'svgstore', 'svg2string']);
@@ -522,8 +544,9 @@ module.exports = function(grunt) {
   grunt.registerTask('purge', ['purgecss:dist']);
 
   //final build
-  grunt.registerTask('dist', ['clean:temp', 'sass:min', 'terser:dist', 'copy:js', 'copy:fontawesome', 'imgmin', 'cssbeauty', 'purgecss:dist']);
-
-  grunt.registerTask('distb', ['clean:temp', 'sass:min', 'terser:dist', 'copy:js', 'copy:fontawesome', 'imgmin', 'cssbeauty', 'purgecss:dist', 'babel:dist']);
-
+  grunt.registerTask(
+    'dist',
+    'Clean dist dir and minify src files',
+    ['clean:assets', 'sass:min', 'terser:dist', 'newer:copy:js', 'newer:copy:fonts', 'imgmin', 'cssbeauty', 'purgecss:dist']
+  );
 };

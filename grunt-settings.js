@@ -35,7 +35,7 @@ module.exports = {
    *   creating the file from sass.  `.css` or `.min.css` will be
    *   appended to it.
    */
-  cssDir:           'public_html/assets/css/',
+  // cssDir:           'public_html/assets/css/',
   cssMainFileDir:   'public_html/assets/css/',
   cssMainFileName:  'main',
 
@@ -49,13 +49,13 @@ module.exports = {
    *   Destination js dir.
    *
    * jsFiles (array)
-   *   These are processed by uglify and concated togeather in the
+   *   These are processed by Terser and concated togeather in the
    *   order they are in the array.  The created file is named main.js
    *   and placed in `jsMainFileDir`.
    *
    * jsVendorFiles (array)
-   *   Any files in this array are copied directly to `jsMainFileDir`
-   *   without any processing.
+   *   Any files in this array are just copied directly to
+   *   `jsMainFileDir` without any processing.
    */
   jsDir:            jsSrcDir, // js src dir
   jsMainFileDir:    'public_html/assets/js/',
@@ -71,15 +71,17 @@ module.exports = {
   ],
 
   /*
-   * Fontawesome
-   * -----------
-   * faDest: destination dir for the fonts
-   * faSourceFonts: dir with the downloaded webfonts
+   * Fonts
+   * -----
+   * fontDest: destination dir for the fonts
+   * fontSource: dir with the downloaded webfonts
+   *
+   * Copy the contents of fontSource to fontDest
    *
    * Note that the fontawesome sass load dir is set in `sassLoadPath`
    */
-  faDest: 'public_html/assets/webfonts',
-  faSourceFonts: 'node_modules/@fortawesome/fontawesome-free/webfonts/*',
+  fontSource: 'node_modules/@fortawesome/fontawesome-free/webfonts/*',
+  fontDest: 'public_html/assets/webfonts',
 
   /*
    * BrowserSync
@@ -90,6 +92,8 @@ module.exports = {
 
   /*
    * Images
+   * ------
+   * Images in imgSourceDir are processed by svgmin and pngmin
    */
   imgSourceDir:     'src/images/',
   imgDir:           'public_html/assets/images/',
